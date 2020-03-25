@@ -11,6 +11,7 @@
 using std::chrono_literals::operator ""s;
 using std::string_literals::operator ""s;
 
+
 auto getConfig() {
 	// Check for existing
 	if (!std::filesystem::exists("./config.json")) {
@@ -37,8 +38,8 @@ auto getPositionWithIP(std::string key) {
 	if (response.status_code != 200) return std::make_tuple(""s, false);
 	auto j = nlohmann::json::parse(response.text);
 	if (!j.contains("status") || !j.contains("adcode")) return std::make_tuple(""s, false);
-	else if (j["status"].get<int>() != 1) return std::make_tuple(""s, false);
-	else return std::make_tuple(j['adcode'].get<std::string>(), true);
+	else if (j["status"].get<std::string>() != "1") return std::make_tuple(""s, false);
+	else return std::make_tuple(j["adcode"].get<std::string>(), true);
 }
 
 auto getDateTime() {
@@ -80,6 +81,10 @@ int main() {
 		}
 		auto j = nlohmann::json::parse(response.text);
 		if (!j.contains("status") || !j.contains("info") || !j.contains("lives")|| j["lives"].size() == 0) {
+			std::this_thread::sleep_for(60s);
+			continue;
+		}
+		if (j["status"].get<std::string>() != "1") {
 			std::this_thread::sleep_for(60s);
 			continue;
 		}
