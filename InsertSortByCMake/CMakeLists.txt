@@ -5,11 +5,6 @@ set(CMAKE_CXX_STANDARD 14)
 
 
 function(swap INPUT first second)
-    if(${first} GREATER ${second})
-        set(temp ${first})
-        set(first ${second})
-        set(second ${temp})
-    endif()
     list(GET INPUT ${first} f_v)
     list(GET INPUT ${second} s_v)
     list(REMOVE_AT INPUT ${first})

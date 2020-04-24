@@ -11,6 +11,7 @@ There are some projects stored here, and which are shown in detail in their own 
 | WeatherLog | A little application to record the weather | C++ |
 | BubbleSortByCMake | Bubble sort algorithm implemented by CMake | CMake |
 | InsertSortByCMake | Insert sort algorithm implmenented by CMake | CMake |
+| QuickSortByCMake| Quick Sort implemented by CMake| CMake|
 
 ### Summary
 These projects are well stored here.
